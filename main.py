@@ -1,25 +1,22 @@
 from file_generators.doc_generator import DocGenerator
 from file_generators.xlsx_generator import XlsxGenerator
 from file_generators.jpeg_generator import JpegGenerator
+from file_generators.pdf_generator import PdfGenerator
+from file_generators.csv_generator import CsvGenerator
 
 
 class FileGeneratorAPI:
-    def __init__(self):
-        pass
+    generators = [
+        DocGenerator,
+        XlsxGenerator,
+        JpegGenerator,
+        PdfGenerator,
+        CsvGenerator,
+    ]
 
     def generate_all_files(self, content, filename):
-        self.generate_doc(content, filename)
-        self.generate_xlsx(content, filename)
-        self.generate_jpeg(content, filename)
-
-    def generate_doc(self, content, filename):
-        DocGenerator.generate_document(content, filename)
-
-    def generate_xlsx(self, content, filename):
-        XlsxGenerator.generate_spreadsheet(content, filename)
-
-    def generate_jpeg(self, content, filename):
-        JpegGenerator.generate_image(content, filename)
+        for generator in self.generators:
+            generator.generate(content, filename)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,10 @@
-from PIL import Image, ImageFont, ImageDraw, ImageColor
+from PIL import Image, ImageFont, ImageDraw
 
 
 class JpegGenerator:
     @staticmethod
-    def generate_image(content, filename="example", color="white"):
-        font_align = "center"
-
+    def generate(content, filename="example"):
+        color = "white"
         font = ImageFont.truetype(
             r"FiraCode-Retina.ttf",
             162,
