@@ -1,8 +1,11 @@
+from pathlib import Path
+
 from file_generators.doc_generator import DocGenerator
 from file_generators.xlsx_generator import XlsxGenerator
 from file_generators.jpeg_generator import JpegGenerator
 from file_generators.pdf_generator import PdfGenerator
 from file_generators.csv_generator import CsvGenerator
+from file_generators.txt_generator import TxtGenerator
 
 
 class FileGeneratorAPI:
@@ -12,9 +15,21 @@ class FileGeneratorAPI:
         JpegGenerator,
         PdfGenerator,
         CsvGenerator,
+        TxtGenerator,
     ]
 
     def generate_all_files(self, content, filename):
+
+        #get current working directory
+        cwd = Path.cwd()
+        #create a new directory called output
+        output_dir = cwd.joinpath("output")
+        output_dir.mkdir(exist_ok=True)
+
+        filename = output_dir.joinpath(filename)
+
+
+
         for generator in self.generators:
             generator.generate(content, filename)
 
