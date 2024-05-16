@@ -8,15 +8,15 @@ from file_generators.txt_generator import TxtGenerator
 from file_generators.image_generator import ImageGenerator
 
 
-class FileGeneratorAPI:
-    generators = [
+class FileForge:
+    generators = (
         DocGenerator,
         XlsxGenerator,
         PdfGenerator,
         CsvGenerator,
         TxtGenerator,
         ImageGenerator,
-    ]
+    )
 
     def generate_all_files(self, content, filename):
         # get current working directory
@@ -32,5 +32,5 @@ class FileGeneratorAPI:
 
 
 if __name__ == "__main__":
-    api = FileGeneratorAPI()
-    api.generate_all_files("my ssn number is: 309-80-2677", "ssn")
+    file_forge = FileForge()
+    file_forge.generate_all_files("my ssn number is: 309-80-2677", "ssn")

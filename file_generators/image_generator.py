@@ -19,13 +19,17 @@ class ImageGenerator:
         text_window = img.getbbox()
         img = img.crop(text_window)
 
-        img.save(f"{filename}.png")
-        img.save(f"{filename}.bmp")
-        img.save(f"{filename}.gif")
-        img.save(f"{filename}.jpeg")
-        img.save(f"{filename}.jpg")
-        img.save(f"{filename}.tif")
-        img.save(f"{filename}.tiff")
-        img.save(f"{filename}.jp2")
-        img.save(f"{filename}.jpf")
-        img.save(f"{filename}.j2c")
+        supported_extensions = (
+            "png",
+            "bmp",
+            "gif",
+            "jpeg",
+            "jpg",
+            "tif",
+            "tiff",
+            "jp2",
+            "jpf",
+            "j2c",
+        )
+        for extension in supported_extensions:
+            img.save(f"{filename}.{extension}")
