@@ -7,6 +7,7 @@ from file_generators.csv_generator import CsvGenerator
 from file_generators.txt_generator import TxtGenerator
 from file_generators.image_generator import ImageGenerator
 from file_generators.eml_generator import EmlGenerator
+from file_generators.pptx_generator import PptxGenerator
 
 
 class FileForge:
@@ -18,6 +19,7 @@ class FileForge:
         TxtGenerator,
         ImageGenerator,
         EmlGenerator,
+        PptxGenerator,
     )
 
     def generate_all_files(self, content, filename, **kwargs):
