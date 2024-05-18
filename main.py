@@ -8,6 +8,7 @@ from file_generators.txt_generator import TxtGenerator
 from file_generators.image_generator import ImageGenerator
 from file_generators.eml_generator import EmlGenerator
 from file_generators.pptx_generator import PptxGenerator
+from file_generators.xml_generator import XmlGenerator
 
 
 class FileForge:
@@ -20,6 +21,7 @@ class FileForge:
         ImageGenerator,
         EmlGenerator,
         PptxGenerator,
+        XmlGenerator,
     )
 
     def generate_all_files(self, content, filename, **kwargs):

@@ -1,5 +1,4 @@
 from pptx import Presentation
-from pptx.util import Inches
 
 
 class PptxGenerator:
@@ -52,6 +51,7 @@ class PptxGenerator:
 
         # Add an image to the slide
         """
+        from pptx.util import Inches
         img_path = 'path/to/your/image.png'
         left = Inches(1)
         top = Inches(1)
