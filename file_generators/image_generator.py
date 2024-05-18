@@ -3,7 +3,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 class ImageGenerator:
     @staticmethod
-    def generate(content, filename="example"):
+    def generate(content, filename="example", **kwargs):
         color = "white"
         font = ImageFont.truetype(
             r"FiraCode-Retina.ttf",

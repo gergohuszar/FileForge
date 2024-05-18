@@ -6,7 +6,7 @@ from reportlab.pdfgen.canvas import Canvas
 
 class PdfGenerator:
     @staticmethod
-    def generate(content, filename="example"):
+    def generate(content, filename="example", **kwargs):
         canvas = Canvas(f"{filename}.pdf", pagesize=LETTER)
         canvas.setFont("Times-Roman", 12)
         canvas.setFillColor(blue)

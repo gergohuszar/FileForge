@@ -3,7 +3,7 @@ import csv
 
 class CsvGenerator:
     @staticmethod
-    def generate(content, filename="example"):
+    def generate(content, filename="example", **kwargs):
         # Open the file in write mode
         with open(f"{filename}.csv", mode="w", newline="") as file:
             writer = csv.writer(file)

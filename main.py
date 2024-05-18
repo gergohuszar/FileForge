@@ -6,6 +6,7 @@ from file_generators.pdf_generator import PdfGenerator
 from file_generators.csv_generator import CsvGenerator
 from file_generators.txt_generator import TxtGenerator
 from file_generators.image_generator import ImageGenerator
+from file_generators.eml_generator import EmlGenerator
 
 
 class FileForge:
@@ -16,9 +17,10 @@ class FileForge:
         CsvGenerator,
         TxtGenerator,
         ImageGenerator,
+        EmlGenerator,
     )
 
-    def generate_all_files(self, content, filename):
+    def generate_all_files(self, content, filename, **kwargs):
         # get current working directory
         cwd = Path.cwd()
         # create a new directory called output
@@ -28,9 +30,11 @@ class FileForge:
         filename = output_dir.joinpath(filename)
 
         for generator in self.generators:
-            generator.generate(content, filename)
+            generator.generate(content, filename, **kwargs)
 
 
 if __name__ == "__main__":
     file_forge = FileForge()
-    file_forge.generate_all_files("my ssn number is: 309-80-2677", "ssn")
+    file_forge.generate_all_files(
+        "my ssn number is: 309-80-2677", "ssn", attachment=True
+    )
