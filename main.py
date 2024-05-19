@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from file_generators.doc_generator import DocGenerator
+from file_generators.html_generator import HtmlGenerator
 from file_generators.xlsx_generator import XlsxGenerator
 from file_generators.pdf_generator import PdfGenerator
 from file_generators.csv_generator import CsvGenerator
@@ -22,6 +23,7 @@ class FileForge:
         EmlGenerator,
         PptxGenerator,
         XmlGenerator,
+        HtmlGenerator
     )
 
     def generate_all_files(self, content, filename, **kwargs):
