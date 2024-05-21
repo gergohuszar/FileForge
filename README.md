@@ -4,13 +4,13 @@ FileForge is a Python tool that generates sample files in various formats with c
 
 ## Currently supported file types:
 
-**Text**
+**Text:**
 - csv
 - txt
 - xml
 - html
 
-**Images**: 
+**Images:** 
 - png
 - bmp
 - gif
@@ -22,15 +22,15 @@ FileForge is a Python tool that generates sample files in various formats with c
 - jpf
 - j2c
 
-**Microsoft Office Files**:
+**Microsoft Office Files:**
 
 - docx
 - pptx
 - xlsx
 
-**Portable Document Format**
-- PDF
+**Portable Document Format:**
+- pdf
 
-**Email files**
+**Email files:**
 - eml
 
