@@ -1,4 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
+from . import metadata_utils
+from pathlib import Path
 
 
 class ImageGenerator:
@@ -33,3 +35,9 @@ class ImageGenerator:
         )
         for extension in supported_extensions:
             img.save(f"{filename}.{extension}")
+
+        if "metadatas" in kwargs:
+            for key, value in kwargs["metadatas"].items():
+                metadata_utils.modify_metadata(
+                    Path(f"{filename}.{extension}"), key, value
+                )

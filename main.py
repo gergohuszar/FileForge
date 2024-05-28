@@ -23,7 +23,7 @@ class FileForge:
         EmlGenerator,
         PptxGenerator,
         XmlGenerator,
-        HtmlGenerator
+        HtmlGenerator,
     )
 
     def generate_all_files(self, content, filename, **kwargs):
@@ -42,5 +42,8 @@ class FileForge:
 if __name__ == "__main__":
     file_forge = FileForge()
     file_forge.generate_all_files(
-        "my ssn number is: 309-80-2677", "ssn", attachment=True
+        "my ssn number is: 309-80-2677",
+        "ssn",
+        attachment=True,
+        metadatas={"Title": "alkapone"},
     )
