@@ -1,14 +1,18 @@
-from reportlab.lib.colors import blue
-from reportlab.lib.pagesizes import LETTER
-from reportlab.lib.units import inch
-from reportlab.pdfgen.canvas import Canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import SimpleDocTemplate, Paragraph
 
 
 class PdfGenerator:
     @staticmethod
     def generate(content, filename="example", **kwargs):
-        canvas = Canvas(f"{filename}.pdf", pagesize=LETTER)
-        canvas.setFont("Times-Roman", 12)
-        canvas.setFillColor(blue)
-        canvas.drawString(1 * inch, 10 * inch, content)
-        canvas.save()
+        pdf = SimpleDocTemplate(f"{filename}.pdf", pagesize=A4)
+
+        styles = getSampleStyleSheet()
+        style = styles["Normal"]
+
+        paragraph = Paragraph(content, style)
+
+        story = [paragraph]
+
+        pdf.build(story)
