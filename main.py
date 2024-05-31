@@ -38,12 +38,29 @@ class FileForge:
         for generator in self.generators:
             generator.generate(content, filename, **kwargs)
 
+    def generate_pdf(self, content, filename, **kwargs):
+        # get current working directory
+        cwd = Path.cwd()
+        # create a new directory called output
+        output_dir = cwd.joinpath("output")
+        output_dir.mkdir(exist_ok=True)
+
+        filename = output_dir.joinpath(filename)
+
+        PdfGenerator.generate(content, filename, **kwargs)
+
 
 if __name__ == "__main__":
     file_forge = FileForge()
     file_forge.generate_all_files(
-        "my ssn number is: 309-80-2677",
+        """my ssn number is: ssn
+814-08-4006
+195-66-8635
+394-39-9750
+""",
         "ssn",
         attachment=True,
-        metadatas={"Title": "alkapone"},
+        metadatas={
+            "Title": "alkapone",
+        },
     )
