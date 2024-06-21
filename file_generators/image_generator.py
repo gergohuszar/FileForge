@@ -12,7 +12,7 @@ class ImageGenerator:
         line_height_ratio = 1.2
         padding = 20
         max_width = 600
-        font_size = 20
+        font_size = 30
 
         font = ImageFont.truetype("arial.ttf", font_size)
 
@@ -57,7 +57,7 @@ class ImageGenerator:
             "j2c",
         )
         for extension in supported_extensions:
-            image.save(f"{filename}.{extension}")
+            image.save(f"{filename}.{extension}", quality=95)
 
         if "metadatas" in kwargs:
             for extension in supported_extensions:
