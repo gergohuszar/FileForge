@@ -26,28 +26,27 @@ class FileForge:
         HtmlGenerator,
     )
 
-    def generate_all_files(self, content, filename, **kwargs):
-        # get current working directory
+    def __init__(self) -> None:
         cwd = Path.cwd()
-        # create a new directory called output
-        output_dir = cwd.joinpath("output")
-        output_dir.mkdir(exist_ok=True)
 
-        filename = output_dir.joinpath(filename)
+        self.output_dir = cwd.joinpath("output")
+        self.output_dir.mkdir(exist_ok=True)
+
+    def generate_all_files(self, content, filename, **kwargs):
+        filename = self.output_dir.joinpath(filename)
 
         for generator in self.generators:
             generator.generate(content, filename, **kwargs)
 
     def generate_pdf(self, content, filename, **kwargs):
-        # get current working directory
-        cwd = Path.cwd()
-        # create a new directory called output
-        output_dir = cwd.joinpath("output")
-        output_dir.mkdir(exist_ok=True)
-
-        filename = output_dir.joinpath(filename)
+        filename = self.output_dir.joinpath(filename)
 
         PdfGenerator.generate(content, filename, **kwargs)
+
+    def generate_text(self, content, filename, **kwargs):
+        filename = self.output_dir.joinpath(filename)
+
+        TxtGenerator.generate(content, filename, **kwargs)
 
 
 if __name__ == "__main__":
