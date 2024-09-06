@@ -1,45 +1,98 @@
-import pandas as pd
-from pathlib import Path
-
-from faker import Faker
-
-from presidio_evaluator import InputSample
-from presidio_evaluator.data_generator import PresidioDataGenerator
-from presidio_evaluator.data_generator.faker_extensions import (
-    FakerSpansResult,
-    RecordsFaker,
-    UsDriverLicenseProvider,
-)
+from .random_paragraph_generator import ParagraphGenerator
 
 
-fake_name_generator_file = Path("FakeNameGenerator.com_3000.csv")
+def driver_license_gen(num_of_sentences: int) -> str:
+    context_words = [
+        "Driver License Number",
+        "DLN",
+        "License Number",
+        "Driving License Number",
+        "Driver's License No.",
+        "License ID",
+        "DL#",
+        "Driver's ID",
+        "Permit Number",
+        "License ID Number",
+        "State ID Number",
+        "Issued Date",
+        "Class (A/B/C/D)",
+        "Restrictions",
+        "Vehicle Type",
+        "Issuing Authority",
+        "State of Issuance",
+        "Expiration Year",
+    ]
 
-fake_name_generator_df = pd.read_csv(fake_name_generator_file)
+    license_numbers = [
+        "6940579",
+        "S530-460-99-424-0",
+        "2270-66-1551",
+        "4031276",
+        "481195160",
+        "006984185",
+        "852858485",
+        "425700624",
+        "409540487",
+        "220804772",
+        "222861714",
+        "A230-279-135-866",
+        "A312-032-153-620",
+        "FRANCRF705BA",
+        "P362-738-729-232",
+        "9741673",
+        "9100575",
+        "U94783965",
+        "341308170",
+        "J1003878",
+        "449451270",
+        "281211981",
+        "1662897",
+        "6348590",
+        "M943688896309",
+        "915182692",
+        "133197326",
+        "LH329609T",
+        "B20093214252",
+        "5761491745",
+        "366211894",
+        "578988637",
+        "385441539",
+        "A125325867",
+        "9385623",
+        "F162823540116",
+        "984540232",
+        "D377768453473",
+        "Y829244176735",
+        "535284465",
+        "964844313",
+        "515606188",
+        "A56319335",
+        "284831437936",
+        "92RPI23272",
+        "U62928788557186",
+        "220053935",
+        "950735093",
+        "982959903687",
+        "749899989",
+        "QM2899809",
+        "755600751",
+        "3560604",
+        "89621179",
+        "2900880",
+        "989832883",
+        "925014173",
+        "103089471",
+        "50473044",
+        "951448502",
+        "758840603",
+        "755947796",
+        "JJHCJX451MC",
+        "5130634",
+        "X1977104127784",
+        "527525559",
+    ]
+    generator = ParagraphGenerator()
 
-
-fake_name_generator_df = PresidioDataGenerator.update_fake_name_generator_df(
-    fake_name_generator_df
-)
-# print(fake_name_generator_df.head())
-
-fake = RecordsFaker(records=fake_name_generator_df, locale="en_US")
-fake.add_provider(UsDriverLicenseProvider)
-lower_case_ratio = 0.05
-number_of_samples = 1500
-data_generator = PresidioDataGenerator(
-    custom_faker=fake, lower_case_ratio=lower_case_ratio
-)
-
-
-sentence_templates = PresidioDataGenerator.read_template_file(
-    Path("driver_license_template.txt")
-)
-fake_records = data_generator.generate_fake_data(
-    templates=sentence_templates, n_samples=number_of_samples
-)
-
-fake_records = list(fake_records)
-
-print(len(fake_records))
-
-breakpoint()
+    return generator.generate_paragraph(
+        license_numbers, context_words, num_of_sentences
+    )

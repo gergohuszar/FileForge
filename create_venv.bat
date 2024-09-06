@@ -1,5 +1,5 @@
-python -m venv fileforge && ^
-cd fileforge\Scripts && ^
+python -m venv my_venv && ^
+cd my_venv\Scripts && ^
 activate.bat && ^
 cd .. && ^
 cd .. && ^
