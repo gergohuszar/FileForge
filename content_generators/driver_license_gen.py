@@ -93,6 +93,6 @@ def driver_license_gen(num_of_sentences: int) -> str:
     ]
     generator = ParagraphGenerator()
 
-    return generator.generate_paragraph(
+    return generator.generate_with_random_choice_of_piis(
         license_numbers, context_words, num_of_sentences
     )
