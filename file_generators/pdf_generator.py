@@ -11,6 +11,7 @@ class PdfGenerator:
         styles = getSampleStyleSheet()
         style = styles["Normal"]
 
+        # NOTE: If content has html characters then the program will crash. Should we use html.escape(content) here?
         paragraph = Paragraph(content, style)
 
         story = [paragraph]
