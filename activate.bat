@@ -1,4 +1,4 @@
-cd fileforge\Scripts && ^
+cd my_venv\Scripts && ^
 activate.bat && ^
 cd .. && ^
 cd .. && ^

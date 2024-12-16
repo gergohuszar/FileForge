@@ -51,15 +51,4 @@ class FileForge:
 
 if __name__ == "__main__":
     file_forge = FileForge()
-    file_forge.generate_all_files(
-        """my ssn number is: ssn
-814-08-4006
-195-66-8635
-394-39-9750
-""",
-        "ssn",
-        attachment=True,
-        metadatas={
-            "Title": "alkapone",
-        },
-    )
+    file_forge.generate_pdf("my passport number is: X171548", "passport")

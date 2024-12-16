@@ -1,7 +1,9 @@
+import random
+
 from .random_paragraph_generator import ParagraphGenerator
 
 
-def driver_license_gen(num_of_sentences: int) -> str:
+class DriverLicenseGenerator:
     context_words = [
         "Driver License Number",
         "DLN",
@@ -91,8 +93,25 @@ def driver_license_gen(num_of_sentences: int) -> str:
         "X1977104127784",
         "527525559",
     ]
-    generator = ParagraphGenerator()
 
-    return generator.generate_with_random_choice_of_piis(
-        license_numbers, context_words, num_of_sentences
-    )
+    templates = [
+        "John Smith's driver license number is {{us_driver_license}}, issued by the State of California on June 15, 2020. The license is valid until June 15, 2026, and covers Class C vehicles. He is required to carry corrective lenses while driving, as indicated in the restrictions section of his license.",
+        "Please provide a valid form of identification such as a driver’s license.E.g: {{us_driver_license}} . Your driver license number should be clearly visible on the front of the card, along with your full name and expiration date. Ensure the document is up-to-date and has not expired.",
+        "During the verification process, Sarah's driver license number ({{us_driver_license}}) was entered into the system for identification purposes. The system confirmed that the license was issued in Texas and is set to expire in December 2025. The document serves as her primary form of ID for all official matters.",
+    ]
+
+    def driver_license_gen_random(self, num_of_sentences: int) -> str:
+        generator = ParagraphGenerator()
+
+        return generator.generate_with_random_choice_of_piis(
+            self.license_numbers, self.context_words, num_of_sentences
+        )
+
+    def driver_license_gen_from_templates(self) -> str:
+        # palce a random driver licenser from license_numbers list into the template
+
+        random_license = random.choice(self.license_numbers)
+        random_template = random.choice(self.templates)
+        text = random_template.replace("{{us_driver_license}}", random_license)
+
+        return text
